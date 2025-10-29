@@ -50,14 +50,10 @@ export default function WhyChooseRunAm() {
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 hover:border-runam-green border-2 border-transparent transition-all"
-                data-testid={`card-benefit-${index}`}
-              >
+              <div key={index} className="bg-white rounded-2xl p-8 hover:border-[#2D8A54] border-2 border-transparent transition-all" data-testid={`card-benefit-${index}`}>
                 <div className="mb-6 flex justify-center">
-                  <div className="h-16 w-16 rounded-full bg-runam-green/10 flex items-center justify-center">
-                    <Icon className="h-8 w-8 text-runam-green" />
+                  <div className="w-16 h-16 rounded-full bg-[#2D8A54]/10 flex items-center justify-center">
+                    <Icon className="w-8 h-8 text-[#2D8A54]" />
                   </div>
                 </div>
 

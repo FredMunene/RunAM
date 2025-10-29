@@ -44,20 +44,14 @@ export default function HowItWorks() {
           {steps.map((step) => {
             const Icon = step.icon;
             return (
-              <div
-                key={step.number}
-                className="relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
-                data-testid={`card-step-${step.number}`}
-              >
-                <div className="absolute -top-3 left-6">
-                  <div className="bg-runam-green text-white rounded-full h-8 w-8 flex items-center justify-center font-bold text-sm">
-                    {step.number}
-                  </div>
+              <div key={step.number} className="relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-100" data-testid={`card-step-${step.number}`}>
+                <div className="absolute -top-3 left-6 bg-[#2D8A54] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
+                  {step.number}
                 </div>
 
                 <div className="mb-4 mt-2">
-                  <div className="h-16 w-16 rounded-full bg-runam-green/10 flex items-center justify-center">
-                    <Icon className="h-8 w-8 text-runam-green" />
+                  <div className="w-16 h-16 rounded-full bg-[#2D8A54]/10 flex items-center justify-center">
+                    <Icon className="w-8 h-8 text-[#2D8A54]" />
                   </div>
                 </div>
 

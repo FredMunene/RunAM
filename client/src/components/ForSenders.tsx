@@ -29,7 +29,6 @@ export default function ForSenders() {
     <section className="py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
           <div className="order-2 lg:order-1">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4" data-testid="text-for-senders-title">
               For Senders
@@ -43,10 +42,8 @@ export default function ForSenders() {
                 const Icon = feature.icon;
                 return (
                   <div key={index} className="flex gap-4" data-testid={`feature-sender-${index}`}>
-                    <div className="flex-shrink-0">
-                      <div className="h-12 w-12 rounded-lg bg-runam-green/10 flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-runam-green" />
-                      </div>
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#2D8A54]/10 flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-[#2D8A54]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-gray-900 mb-1" data-testid={`text-sender-feature-${index}-title`}>
@@ -62,15 +59,9 @@ export default function ForSenders() {
             </div>
           </div>
 
-          {/* Image */}
           <div className="order-1 lg:order-2">
             <div className="rounded-3xl overflow-hidden shadow-lg">
-              <img
-                src={senderImage}
-                alt="Person holding package"
-                className="w-full h-full object-cover"
-                data-testid="img-sender"
-              />
+              <img src={senderImage} alt="Person holding package" className="w-full h-full object-cover" data-testid="img-sender" />
             </div>
           </div>
         </div>

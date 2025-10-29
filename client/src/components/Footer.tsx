@@ -23,22 +23,19 @@ const footerLinks = {
 };
 
 const socialIcons = [
-  { icon: Facebook, label: 'Facebook', href: '#' },
-  { icon: Twitter, label: 'Twitter', href: '#' },
-  { icon: Instagram, label: 'Instagram', href: '#' },
-  { icon: Linkedin, label: 'LinkedIn', href: '#' },
+  { icon: Facebook, label: 'Facebook' },
+  { icon: Twitter, label: 'Twitter' },
+  { icon: Instagram, label: 'Instagram' },
+  { icon: Linkedin, label: 'LinkedIn' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-runam-navy text-white">
+    <footer className="bg-[#1A2332] text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Company Info */}
           <div>
-            <div className="mb-4">
-              <img src={logoImage} alt="RunAm Logo" className="h-10" data-testid="img-footer-logo" />
-            </div>
+            <img src={logoImage} alt="RunAm Logo" className="h-10 mb-4" data-testid="img-footer-logo" />
             <p className="text-gray-400 text-sm mb-6" data-testid="text-footer-tagline">
               Connecting senders with travelers for faster, cheaper, and safer deliveries worldwide.
             </p>
@@ -46,25 +43,14 @@ export default function Footer() {
               {socialIcons.map((social, index) => {
                 const Icon = social.icon;
                 return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log(`${social.label} clicked`);
-                    }}
-                    className="h-10 w-10 rounded-full bg-white/10 hover:bg-runam-green flex items-center justify-center transition-colors"
-                    aria-label={social.label}
-                    data-testid={`link-social-${social.label.toLowerCase()}`}
-                  >
-                    <Icon className="h-5 w-5" />
+                  <a key={index} href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#2D8A54] flex items-center justify-center transition-colors" aria-label={social.label} data-testid={`link-social-${social.label.toLowerCase()}`}>
+                    <Icon className="w-5 h-5" />
                   </a>
                 );
               })}
             </div>
           </div>
 
-          {/* For Senders */}
           <div>
             <h3 className="font-bold text-sm uppercase tracking-wide mb-4" data-testid="text-footer-senders-heading">
               For Senders
@@ -72,15 +58,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.forSenders.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log(`${link.label} clicked`);
-                    }}
-                    className="text-gray-400 hover:text-runam-green transition-colors text-sm"
-                    data-testid={`link-footer-sender-${index}`}
-                  >
+                  <a href={link.href} className="text-gray-400 hover:text-[#2D8A54] transition-colors text-sm" data-testid={`link-footer-sender-${index}`}>
                     {link.label}
                   </a>
                 </li>
@@ -88,7 +66,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* For Travelers */}
           <div>
             <h3 className="font-bold text-sm uppercase tracking-wide mb-4" data-testid="text-footer-travelers-heading">
               For Travelers
@@ -96,15 +73,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.forTravelers.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log(`${link.label} clicked`);
-                    }}
-                    className="text-gray-400 hover:text-runam-green transition-colors text-sm"
-                    data-testid={`link-footer-traveler-${index}`}
-                  >
+                  <a href={link.href} className="text-gray-400 hover:text-[#2D8A54] transition-colors text-sm" data-testid={`link-footer-traveler-${index}`}>
                     {link.label}
                   </a>
                 </li>
@@ -112,7 +81,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
           <div>
             <h3 className="font-bold text-sm uppercase tracking-wide mb-4" data-testid="text-footer-company-heading">
               Company
@@ -120,15 +88,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log(`${link.label} clicked`);
-                    }}
-                    className="text-gray-400 hover:text-runam-green transition-colors text-sm"
-                    data-testid={`link-footer-company-${index}`}
-                  >
+                  <a href={link.href} className="text-gray-400 hover:text-[#2D8A54] transition-colors text-sm" data-testid={`link-footer-company-${index}`}>
                     {link.label}
                   </a>
                 </li>
@@ -137,32 +97,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm" data-testid="text-footer-copyright">
             © 2025 RunAm. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log('Privacy Policy clicked');
-              }}
-              className="text-gray-400 hover:text-runam-green transition-colors"
-              data-testid="link-footer-privacy"
-            >
+            <a href="#" className="text-gray-400 hover:text-[#2D8A54] transition-colors" data-testid="link-footer-privacy">
               Privacy Policy
             </a>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log('Terms of Service clicked');
-              }}
-              className="text-gray-400 hover:text-runam-green transition-colors"
-              data-testid="link-footer-terms"
-            >
+            <a href="#" className="text-gray-400 hover:text-[#2D8A54] transition-colors" data-testid="link-footer-terms">
               Terms of Service
             </a>
             <span className="text-gray-400" data-testid="text-footer-powered">

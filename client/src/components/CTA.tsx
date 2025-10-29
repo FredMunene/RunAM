@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Smartphone, Lock, Headphones } from 'lucide-react';
 
 const features = [
@@ -22,19 +19,8 @@ const features = [
 ];
 
 export default function CTA() {
-  const [email, setEmail] = useState('');
-
-  const handleCreateAccount = () => {
-    console.log('Create account with email:', email);
-    setEmail('');
-  };
-
-  const handleLearnMore = () => {
-    console.log('Learn more clicked');
-  };
-
   return (
-    <section className="py-20 lg:py-24 bg-runam-green text-white">
+    <section className="py-20 lg:py-24 bg-[#2D8A54] text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <h2 className="text-4xl lg:text-5xl font-bold mb-4" data-testid="text-cta-title">
           Ready to Get Started?
@@ -44,37 +30,22 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 max-w-2xl mx-auto">
-          <Button
-            onClick={handleCreateAccount}
-            size="lg"
-            className="bg-white text-runam-green hover:bg-gray-100 px-8 py-6 text-lg font-semibold rounded-full"
-            data-testid="button-create-account"
-          >
+          <button className="bg-white text-[#2D8A54] hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-full transition-colors" data-testid="button-create-account">
             Create Account
-          </Button>
-          <Button
-            onClick={handleLearnMore}
-            size="lg"
-            variant="outline"
-            className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-full"
-            data-testid="button-learn-more"
-          >
+          </button>
+          <button className="border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold rounded-full transition-colors" data-testid="button-learn-more">
             Learn More
-          </Button>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6"
-                data-testid={`card-cta-feature-${index}`}
-              >
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6" data-testid={`card-cta-feature-${index}`}>
                 <div className="flex justify-center mb-4">
-                  <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center">
-                    <Icon className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid={`text-cta-feature-${index}-title`}>
