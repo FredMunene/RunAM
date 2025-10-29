@@ -32,9 +32,10 @@ const socialIcons = [
 export default function Footer() {
   return (
     <footer className="bg-[#1A2332] text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          <div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          {/* Brand Column */}
+          <div className="sm:col-span-2 lg:col-span-1">
             <img src={logoImage} alt="RunAm Logo" className="h-10 mb-4" data-testid="img-footer-logo" />
             <p className="text-gray-400 text-sm mb-6" data-testid="text-footer-tagline">
               Connecting senders with travelers for faster, cheaper, and safer deliveries worldwide.
