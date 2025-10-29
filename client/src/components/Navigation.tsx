@@ -14,38 +14,41 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
       <div className="max-w-7xl mx-auto bg-black/40 backdrop-blur-lg rounded-full px-6 lg:px-8 border border-white/10">
-        <div className="flex items-center justify-between h-14 lg:h-16">
-          {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" data-testid="link-logo">
-            <img src={logoImage} alt="RunAm Logo" className="h-8 lg:h-10" />
+        <div className="flex items-center justify-between h-14 lg:h-16 w-full">
+          {/* Left side: Logo and Navigation */}
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <div className="flex items-center gap-2 cursor-pointer" data-testid="link-logo">
+              <img src={logoImage} alt="RunAm Logo" className="h-8 lg:h-10" />
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-6">
+              <button
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-white hover:text-runam-yellow transition-colors font-medium"
+                data-testid="link-how-it-works"
+              >
+                How it works
+              </button>
+              <button
+                onClick={() => scrollToSection('features')}
+                className="text-white hover:text-runam-yellow transition-colors font-medium"
+                data-testid="link-features"
+              >
+                Features
+              </button>
+              <button
+                onClick={() => scrollToSection('benefits')}
+                className="text-white hover:text-runam-yellow transition-colors font-medium"
+                data-testid="link-benefits"
+              >
+                Benefits
+              </button>
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('how-it-works')}
-              className="text-white hover:text-runam-yellow transition-colors font-medium"
-              data-testid="link-how-it-works"
-            >
-              How it works
-            </button>
-            <button
-              onClick={() => scrollToSection('features')}
-              className="text-white hover:text-runam-yellow transition-colors font-medium"
-              data-testid="link-features"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => scrollToSection('benefits')}
-              className="text-white hover:text-runam-yellow transition-colors font-medium"
-              data-testid="link-benefits"
-            >
-              Benefits
-            </button>
-          </div>
-
-          {/* Desktop CTAs */}
+          {/* Right side: Desktop CTAs */}
           <div className="hidden md:flex items-center gap-4">
             <button
               onClick={() => console.log('Sign in clicked')}
