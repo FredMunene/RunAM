@@ -11,7 +11,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-full px-8">
           {/* Left: Logo + Navigation */}
           <div className="flex items-center gap-8">
-            <img src={logoImage} alt="RunAm" className="h-10" data-testid="link-logo" />
+            <img src={logoImage} alt="RunAm" className="h-8" data-testid="link-logo" />
             
             <div className="hidden md:flex items-center gap-6">
               <button className="text-white hover:text-[#FFD700] transition-colors font-medium" data-testid="link-how-it-works">

@@ -3,14 +3,14 @@ import vehiclesImage from '@assets/Frame 13_1761765658410.png';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[70px]">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img src={roadBg} alt="" className="w-full h-full object-cover" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 pt-32 pb-20 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <h1 className="text-8xl md:text-9xl font-bold text-[#FFD700] mb-6" data-testid="text-hero-title">
           RunAM
         </h1>
@@ -29,7 +29,7 @@ export default function Hero() {
       </div>
 
       {/* Vehicles on Road */}
-      <div className="absolute bottom-8 right-12 w-80 lg:w-96">
+      <div className="absolute bottom-12 right-16 lg:right-24 w-72 lg:w-80 xl:w-96">
         <img src={vehiclesImage} alt="" className="w-full h-auto object-contain" />
       </div>
     </section>
