@@ -12,9 +12,10 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
-      <div className="max-w-7xl mx-auto backdrop-blur-lg rounded-full px-6 lg:px-8 border border-white/10" style={{ backgroundColor: 'rgba(115, 104, 93, 0.8)' }}>
-        <div className="flex items-center justify-between h-14 lg:h-16 w-full">
+    <nav className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: '#73685D' }}>
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        <div className="bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full px-6 lg:px-8">
+          <div className="flex items-center justify-between h-12 lg:h-14 w-full">
           {/* Left side: Logo and Navigation */}
           <div className="flex items-center gap-8">
             {/* Logo */}
@@ -74,11 +75,12 @@ export default function Navigation() {
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20 bg-black/50 backdrop-blur-lg">
+          <div className="md:hidden py-4 mt-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl px-4">
             <div className="flex flex-col gap-4">
               <button
                 onClick={() => scrollToSection('how-it-works')}
