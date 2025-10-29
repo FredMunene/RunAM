@@ -10,16 +10,18 @@ export default function Hero() {
       </div>
 
       {/* Content - Positioned in upper sky area */}
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-12 sm:pt-16 md:pt-20 lg:pt-24">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-[1014px] mx-auto pt-12 sm:pt-16 md:pt-20 lg:pt-24">
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[#FFD700] mb-3 sm:mb-4 md:mb-6" data-testid="text-hero-title">
           RunAM
         </h1>
         
-        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-normal mb-3 sm:mb-4 md:mb-6 px-2" data-testid="text-hero-tagline">
+        {/* Tagline - Figma specs: width 1014px, height 152px */}
+        <h2 className="w-full max-w-[1014px] min-h-[152px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-normal mb-3 sm:mb-4 md:mb-6 flex items-center justify-center" data-testid="text-hero-tagline">
           Your Route. Their Package. One Simple Connection.
         </h2>
         
-        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/90 max-w-3xl mx-auto mb-5 sm:mb-6 md:mb-8 lg:mb-10 px-2" data-testid="text-hero-subtitle">
+        {/* Subtitle - Figma specs: width 1014px, height 88px, padding 15px 19px */}
+        <p className="w-full max-w-[1014px] min-h-[88px] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/90 mx-auto mb-5 sm:mb-6 md:mb-8 lg:mb-10 py-[15px] px-[19px] flex items-center justify-center" data-testid="text-hero-subtitle">
           Join Africa's peer-to-peer delivery network where every trip can earn you more, and every package arrives faster.
         </p>
 
@@ -28,8 +30,8 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* Vehicles on Road - Responsive positioning */}
-      <div className="absolute bottom-0 sm:bottom-4 md:bottom-6 lg:bottom-8 xl:bottom-12 right-0 sm:right-4 md:right-8 lg:right-12 xl:right-24 w-48 sm:w-56 md:w-64 lg:w-72 xl:w-96 z-0">
+      {/* Vehicles on Road - Closer positioning, responsive for mobile */}
+      <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-8 md:bottom-8 md:right-12 lg:bottom-12 lg:right-16 w-40 sm:w-56 md:w-64 lg:w-80 xl:w-96 z-0">
         <img src={vehiclesImage} alt="" className="w-full h-auto object-contain" />
       </div>
     </section>
