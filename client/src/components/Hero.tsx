@@ -29,7 +29,7 @@ export default function Hero() {
       </div>
 
       {/* Vehicles on Road */}
-      <div className="absolute bottom-0 right-0 w-full max-w-2xl lg:max-w-3xl">
+      <div className="absolute bottom-8 right-12 w-80 lg:w-96">
         <img src={vehiclesImage} alt="" className="w-full h-auto object-contain" />
       </div>
     </section>
