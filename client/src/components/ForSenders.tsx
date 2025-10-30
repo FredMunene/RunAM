@@ -1,5 +1,5 @@
 import { Zap, DollarSign, Calendar, Globe } from 'lucide-react';
-import senderImage from '@assets/generated_images/Man_holding_package_box_09554db5.png';
+import senderImage from '@assets/sender_1761850211200.jpg';
 
 const features = [
   {

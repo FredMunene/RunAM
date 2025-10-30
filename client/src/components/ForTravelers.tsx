@@ -1,5 +1,5 @@
 import { Wallet, Clock, Heart, TrendingUp } from 'lucide-react';
-import travelerImage from '@assets/generated_images/Traveler_with_backpack_at_station_4199c77d.png';
+import travelerImage from '@assets/travellers_1761850211196.jpg';
 
 const features = [
   {
