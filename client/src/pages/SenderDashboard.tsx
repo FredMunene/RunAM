@@ -1,6 +1,7 @@
 import { LayoutDashboard, Send, MapPin, Plane, Bell, User } from 'lucide-react';
 import { useState } from 'react';
 import logoImage from '@assets/logo_1761761867719.png';
+import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 
 const mockTravelers = [
   { id: 1, name: 'Uche', rating: 5.0, route: 'Calabar → Lagos', available: '20kg available', price: '$5/kg' },
@@ -89,7 +90,10 @@ export default function SenderDashboard() {
 
         {/* Dashboard Content */}
         <div className="flex-1 overflow-auto p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {activeTab === 'dashboard' ? (
+            <AnalyticsDashboard />
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Send a Parcel Form */}
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <h2 className="text-2xl font-bold text-gray-900 mb-6" data-testid="text-send-parcel-title">
@@ -222,6 +226,7 @@ export default function SenderDashboard() {
               </div>
             </div>
           </div>
+          )}
         </div>
       </div>
     </div>
