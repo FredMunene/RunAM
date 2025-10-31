@@ -103,6 +103,16 @@ export default function GetStartedModal({ isOpen, onClose }: GetStartedModalProp
               />
             </div>
 
+            <div>
+              <label className="block text-sm font-medium text-gray-900 mb-2">NIN (National Identification Number)</label>
+              <input
+                type="text"
+                placeholder="Enter your NIN"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2D6A4F] focus:border-transparent"
+                data-testid="input-nin"
+              />
+            </div>
+
             {selectedRole === 'traveler' && (
               <div>
                 <label className="block text-sm font-medium text-gray-900 mb-2">How often do you travel?</label>
