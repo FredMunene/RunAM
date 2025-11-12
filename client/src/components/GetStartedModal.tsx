@@ -105,7 +105,7 @@ export default function GetStartedModal({ isOpen, onClose }: GetStartedModalProp
 
     setTimeout(() => {
       onClose();
-      const dashboardPath = selectedRole === 'sender' ? '/sender-dashboard' : '/traveler-dashboard';
+      const dashboardPath = selectedRole === 'sender' ? '/sender' : '/traveler';
       setLocation(dashboardPath);
     }, 2000);
   };

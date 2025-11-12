@@ -67,7 +67,7 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
     
     setIsSubmitting(false);
     handleClose();
-    setLocation('/sender-dashboard');
+    setLocation('/sender');
   };
 
   const handleGoogleSignIn = () => {
