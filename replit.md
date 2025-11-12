@@ -4,7 +4,34 @@
 
 RunAm is a peer-to-peer delivery marketplace platform that connects parcel senders with travelers already heading to the same destination. The platform aims to make deliveries faster, cheaper, and more reliable by leveraging existing travel routes. Starting with a focus on Nigeria (specifically Akwa Ibom), RunAm provides a trust-first approach to package delivery through verified travelers, secure payments, and real-time tracking.
 
-The current implementation consists of a landing page showcasing the platform's value proposition to both senders and travelers, with a mobile-first responsive design emphasizing trust, safety, and transparency.
+## Current MVP Status (UI-Only with Dummy Data)
+
+The application is now a **functional UI-only MVP** ready for user testing and demonstration. All features use client-side state and dummy data - no backend/database integration yet.
+
+**Completed Interactive Features:**
+- ✅ Landing page with responsive design and call-to-action buttons
+- ✅ Sign-up flow with multi-step form validation (NIN, email, phone, password strength)
+- ✅ Simulated SMS phone verification (demo code: 123456)
+- ✅ Sign-in flow with form validation
+- ✅ Complete parcel booking workflow (form → find travelers → select → confirm → view bookings)
+- ✅ Transaction limits ($50 for new users) with UI enforcement
+- ✅ Traveler cards with star ratings (4.5-5.0 scale)
+- ✅ Analytics dashboard with charts and metrics
+- ✅ Toast notifications for user feedback throughout the app
+
+**Security & Validation:**
+- NIN: 11-digit Nigerian format validation
+- Phone: Nigerian format validation (supports 0803..., +234803..., or 803... formats)
+- Email: Standard email validation
+- Password: Minimum 8 characters, requires 2 of: lowercase, uppercase, numbers, symbols
+- Transaction limits: $50 cap for new users enforced in UI
+
+**MVP Notes for Future Integration:**
+- SMS Verification: Currently simulated. User declined Twilio integration setup. When ready for production, can integrate Twilio or Nigerian SMS provider (e.g., Termii, BulkSMS Nigeria) with API keys stored as secrets.
+- NIN Verification: Format validation only. For real verification, integrate with NIMC API or third-party verification services.
+- Authentication: Forms validate and navigate to dashboards, but no actual auth backend yet.
+- Payments: Displays USDC pricing with 20% platform commission, but no Solana/blockchain integration yet.
+- Data Persistence: All bookings, user data stored in React state only - resets on page refresh.
 
 ## User Preferences
 
