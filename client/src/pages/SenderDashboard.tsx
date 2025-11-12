@@ -1,4 +1,4 @@
-import { LayoutDashboard, Send, MapPin, Plane, Bell, User, AlertCircle, Package } from 'lucide-react';
+import { LayoutDashboard, Send, MapPin, Plane, Bell, User, AlertCircle, Package, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import logoImage from '@assets/logo_1761761867719.png';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
@@ -45,6 +45,7 @@ export default function SenderDashboard() {
   const [selectedTraveler, setSelectedTraveler] = useState<typeof mockTravelers[0] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState<ParcelFormData>({
@@ -180,9 +181,24 @@ export default function SenderDashboard() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
-        <div className="p-6">
+      {isMobileSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" 
+          onClick={() => setIsMobileSidebarOpen(false)}
+          data-testid="backdrop-overlay"
+        />
+      )}
+
+      <div className={`${isMobileSidebarOpen ? 'fixed' : 'hidden'} lg:flex w-64 bg-white border-r border-gray-200 flex-col z-50 h-full transition-transform`}>
+        <div className="p-6 flex items-center justify-between">
           <img src={logoImage} alt="RunAm" className="h-8" />
+          <button 
+            onClick={() => setIsMobileSidebarOpen(false)} 
+            className="lg:hidden"
+            data-testid="button-close-sidebar"
+          >
+            <X className="w-6 h-6 text-gray-600" />
+          </button>
         </div>
 
         <nav className="flex-1 px-4 space-y-2">
@@ -254,14 +270,23 @@ export default function SenderDashboard() {
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-end gap-4">
-          <button className="relative" data-testid="button-notifications">
-            <Bell className="w-6 h-6 text-gray-600" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"></span>
+        <header className="bg-white border-b border-gray-200 px-4 sm:px-8 py-4 flex items-center justify-between gap-4">
+          <button 
+            onClick={() => setIsMobileSidebarOpen(true)} 
+            className="lg:hidden"
+            data-testid="button-hamburger-menu"
+          >
+            <Menu className="w-6 h-6 text-gray-600" />
           </button>
-          <button className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center" data-testid="button-profile">
-            <User className="w-5 h-5 text-gray-600" />
-          </button>
+          <div className="flex items-center gap-4 ml-auto">
+            <button className="relative" data-testid="button-notifications">
+              <Bell className="w-6 h-6 text-gray-600" />
+              <span className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"></span>
+            </button>
+            <button className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center" data-testid="button-profile">
+              <User className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
         </header>
 
         <div className="flex-1 overflow-auto p-8">

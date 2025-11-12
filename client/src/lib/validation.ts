@@ -137,3 +137,23 @@ export const validatePositiveNumber = (value: string, fieldName: string): { vali
   
   return { valid: true };
 };
+
+export const validateFutureDate = (dateString: string, fieldName: string): { valid: boolean; error?: string } => {
+  if (!dateString || !dateString.trim()) {
+    return { valid: false, error: `${fieldName} is required` };
+  }
+  
+  const selectedDate = new Date(dateString);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  if (isNaN(selectedDate.getTime())) {
+    return { valid: false, error: `${fieldName} must be a valid date` };
+  }
+  
+  if (selectedDate < today) {
+    return { valid: false, error: `${fieldName} must be today or a future date` };
+  }
+  
+  return { valid: true };
+};
