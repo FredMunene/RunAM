@@ -567,6 +567,31 @@ export default function TravelerDashboard() {
                 </div>
               </div>
             </div>
+          ) : activeTab === 'track' ? (
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-xl p-12 sm:p-16 text-center shadow-sm" data-testid="section-track-coming-soon">
+                <div className="max-w-md mx-auto">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#2D6A4F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-[#2D6A4F]" />
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4" data-testid="text-coming-soon-title">
+                    Coming Soon
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-3">
+                    Real-time delivery tracking
+                  </p>
+                  <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
+                    Track your active deliveries in real-time with live location updates, pickup confirmations, and delivery notifications. Keep your senders informed with automated status updates throughout the delivery journey.
+                  </p>
+                  <div className="mt-8 pt-8 border-t border-gray-200">
+                    <div className="flex items-center justify-center gap-2 text-[#2D6A4F]">
+                      <div className="w-2 h-2 bg-[#2D6A4F] rounded-full animate-pulse"></div>
+                      <p className="text-sm font-medium">Feature in development</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           ) : activeTab === 'analytics' ? (
             <div className="max-w-6xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8">Analytics</h2>
