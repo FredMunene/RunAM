@@ -227,6 +227,22 @@ export default function TravelerDashboard() {
 
           <button
             onClick={() => {
+              setActiveTab('track');
+              setIsMobileSidebarOpen(false);
+            }}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
+              activeTab === 'track' 
+                ? 'bg-gray-100 text-gray-900' 
+                : 'text-gray-600 hover:bg-gray-50'
+            }`}
+            data-testid="button-nav-track"
+          >
+            <MapPin className="w-5 h-5" />
+            <span className="font-medium">Track</span>
+          </button>
+
+          <button
+            onClick={() => {
               setActiveTab('analytics');
               setIsMobileSidebarOpen(false);
             }}
