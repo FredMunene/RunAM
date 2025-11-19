@@ -12,7 +12,7 @@ interface WalletContextType {
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
-const FAKE_WALLET_ADDRESS = '7xK9mP4wQv8TnLzY3hR2nB5vC8dF1eG6jH9kL4mN3pQ2';
+const FAKE_WALLET_ADDRESS = '0.0.1234567';
 const FAKE_USDC_BALANCE = 125.50;
 
 export function WalletProvider({ children }: { children: ReactNode }) {

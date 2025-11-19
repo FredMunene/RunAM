@@ -27,22 +27,22 @@ export default function ConnectWalletModal() {
 
         <div className="space-y-4 py-4">
           <p className="text-gray-600 text-sm">
-            Connect your Solana wallet to send and receive USDC payments on RunAm.
+            Connect your Hedera wallet to send and receive USDC payments on RunAm.
           </p>
 
           <button
             onClick={handleConnect}
             disabled={isConnecting}
             className="w-full flex items-center justify-between p-4 border-2 border-gray-200 rounded-lg hover:border-[#2D6A4F] hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
-            data-testid="button-connect-phantom"
+            data-testid="button-connect-hashpack"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <Wallet className="w-6 h-6 text-white" />
               </div>
               <div className="text-left">
-                <p className="font-semibold text-gray-900">Phantom Wallet</p>
-                <p className="text-xs text-gray-500">Most popular Solana wallet</p>
+                <p className="font-semibold text-gray-900">HashPack Wallet</p>
+                <p className="text-xs text-gray-500">Most popular Hedera wallet</p>
               </div>
             </div>
             {isConnecting ? (
