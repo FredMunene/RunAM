@@ -1,8 +1,9 @@
-import { LayoutDashboard, Plane, Bell, User, Menu, X, MapPin, Package, Calendar, DollarSign, TrendingUp } from 'lucide-react';
+import { LayoutDashboard, Plane, Bell, User, Menu, X, MapPin, Package, Calendar, DollarSign, TrendingUp, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 import logoImage from '@assets/logo_1761761867719.png';
 import WalletButton from '@/components/WalletButton';
 import ConnectWalletModal from '@/components/ConnectWalletModal';
+import NftReceiptModal from '@/components/NftReceiptModal';
 import { validateRequired, validatePositiveNumber, validateFutureDate } from '@/lib/validation';
 import { useToast } from '@/hooks/use-toast';
 
@@ -38,6 +39,8 @@ interface Parcel {
 interface AcceptedDelivery extends Parcel {
   acceptedAt: Date;
   tripId: string;
+  delivered?: boolean;
+  deliveredAt?: Date;
 }
 
 const mockParcels: Parcel[] = [
@@ -55,6 +58,8 @@ export default function TravelerDashboard() {
   const [createdTrips, setCreatedTrips] = useState<Trip[]>([]);
   const [acceptedDeliveries, setAcceptedDeliveries] = useState<AcceptedDelivery[]>([]);
   const [currentTripForMatching, setCurrentTripForMatching] = useState<Trip | null>(null);
+  const [showNftReceipt, setShowNftReceipt] = useState(false);
+  const [completedDelivery, setCompletedDelivery] = useState<AcceptedDelivery | null>(null);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState<TripFormData>({
@@ -160,6 +165,7 @@ export default function TravelerDashboard() {
       ...parcel,
       acceptedAt: new Date(),
       tripId: currentTripForMatching.id,
+      delivered: false,
     };
 
     setAcceptedDeliveries(prev => [acceptedDelivery, ...prev]);
@@ -168,6 +174,25 @@ export default function TravelerDashboard() {
       title: 'Delivery accepted!',
       description: `You've accepted to deliver ${parcel.item} from ${parcel.sender}. Payment: $${parcel.paymentAmount} USDC`,
     });
+  };
+
+  const handleMarkAsDelivered = async (delivery: AcceptedDelivery) => {
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const updatedDelivery: AcceptedDelivery = {
+      ...delivery,
+      delivered: true,
+      deliveredAt: new Date(),
+    };
+
+    setAcceptedDeliveries(prev => 
+      prev.map(d => d.id === delivery.id ? updatedDelivery : d)
+    );
+
+    setCompletedDelivery(updatedDelivery);
+    setIsLoading(false);
+    setShowNftReceipt(true);
   };
 
   const matchingParcels = currentTripForMatching ? getMatchingParcels(currentTripForMatching) : [];
@@ -536,32 +561,58 @@ export default function TravelerDashboard() {
                     <div className="space-y-4">
                       {acceptedDeliveries.map((delivery) => (
                         <div key={`${delivery.id}-${delivery.acceptedAt}`} className="bg-white rounded-xl p-4 sm:p-6 shadow-sm" data-testid={`card-delivery-${delivery.id}`}>
-                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-6">
-                            <div className="flex-1">
-                              <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-2">
-                                Parcel from {delivery.sender}
-                              </h4>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-600">
-                                <div>
-                                  <p><span className="font-medium">Item:</span> {delivery.item}</p>
-                                  <p><span className="font-medium">Weight:</span> {delivery.weight}kg</p>
-                                  <p><span className="font-medium">Value:</span> ${delivery.value}</p>
-                                </div>
-                                <div>
-                                  <p><span className="font-medium">Pickup:</span> {delivery.pickup}</p>
-                                  <p><span className="font-medium">Delivery:</span> {delivery.delivery}</p>
-                                  <p><span className="font-medium">Trip ID:</span> {delivery.tripId}</p>
+                          <div className="flex flex-col gap-4">
+                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-6">
+                              <div className="flex-1">
+                                <h4 className="font-bold text-gray-900 text-base sm:text-lg mb-2">
+                                  Parcel from {delivery.sender}
+                                </h4>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-600">
+                                  <div>
+                                    <p><span className="font-medium">Item:</span> {delivery.item}</p>
+                                    <p><span className="font-medium">Weight:</span> {delivery.weight}kg</p>
+                                    <p><span className="font-medium">Value:</span> ${delivery.value}</p>
+                                  </div>
+                                  <div>
+                                    <p><span className="font-medium">Pickup:</span> {delivery.pickup}</p>
+                                    <p><span className="font-medium">Delivery:</span> {delivery.delivery}</p>
+                                    <p><span className="font-medium">Trip ID:</span> {delivery.tripId}</p>
+                                  </div>
                                 </div>
                               </div>
+                              <div className="sm:text-right">
+                                <p className="text-base sm:text-lg font-bold text-[#2D6A4F] mb-2">
+                                  ${delivery.paymentAmount} USDC
+                                </p>
+                                {delivery.delivered ? (
+                                  <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                                    Delivered
+                                  </span>
+                                ) : (
+                                  <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+                                    In Transit
+                                  </span>
+                                )}
+                              </div>
                             </div>
-                            <div className="sm:text-right">
-                              <p className="text-base sm:text-lg font-bold text-[#2D6A4F] mb-1">
-                                ${delivery.paymentAmount} USDC
-                              </p>
-                              <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
-                                Accepted
-                              </span>
-                            </div>
+                            {!delivery.delivered && (
+                              <div className="pt-3 border-t border-gray-200">
+                                <button
+                                  onClick={() => handleMarkAsDelivered(delivery)}
+                                  disabled={isLoading}
+                                  className="w-full sm:w-auto px-6 py-2.5 bg-[#2D6A4F] hover:bg-[#2D6A4F]/90 text-white rounded-lg font-semibold transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                                  data-testid={`button-mark-delivered-${delivery.id}`}
+                                >
+                                  <CheckCircle className="w-4 h-4" />
+                                  {isLoading ? 'Processing...' : 'Mark as Delivered'}
+                                </button>
+                              </div>
+                            )}
+                            {delivery.delivered && delivery.deliveredAt && (
+                              <div className="pt-3 border-t border-gray-200 text-xs text-gray-500">
+                                Delivered on {new Date(delivery.deliveredAt).toLocaleString()}
+                              </div>
+                            )}
                           </div>
                         </div>
                       ))}
@@ -616,6 +667,25 @@ export default function TravelerDashboard() {
       </div>
 
       <ConnectWalletModal />
+
+      {completedDelivery && (
+        <NftReceiptModal
+          isOpen={showNftReceipt}
+          onClose={() => {
+            setShowNftReceipt(false);
+            toast({
+              title: 'Delivery completed!',
+              description: `You've successfully delivered ${completedDelivery.item}. Your earnings of $${completedDelivery.paymentAmount} USDC have been released.`,
+            });
+          }}
+          bookingId={`DL-${completedDelivery.id}`}
+          route={`${completedDelivery.pickup} → ${completedDelivery.delivery}`}
+          amount={completedDelivery.paymentAmount}
+          status="COMPLETE"
+          timestamp={completedDelivery.deliveredAt?.toLocaleString() || new Date().toLocaleString()}
+          nftTokenId={`0.0.${Math.floor(Math.random() * 9000000) + 1000000}`}
+        />
+      )}
     </div>
   );
 }
