@@ -1,5 +1,7 @@
 # RunAm
 
+![RunAm logo](./docs/logo.png)
+
 Tokenized Trust for Africa's Logistics
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg )
@@ -219,7 +221,7 @@ npm run dev
 
 ## Demo
 
-**Live Demo:** [run-am.replit.app](url)  
+**Live Demo:** [run-am.replit.app](https://run-am.replit.app)  
 **Video Demo:** [YouTube](url)  
 **Pitch Deck:** [`docs/pitch-deck.pdf`](docs/pitch-deck.pdf)
 
