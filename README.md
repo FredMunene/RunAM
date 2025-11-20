@@ -20,13 +20,11 @@ The first **micro-transaction trust protocol**—a logistics marketplace that IS
 - [Validation](#validation)
 - [Future Roadmap](#future-roadmap)
 - [Getting Started](#getting-started)
-- [Demo](#demo)
-- [Team](#team)
-- [License](#license)
+  
 
 ## About
 
-RunAm is a revolutionary peer-to-peer parcel delivery marketplace built for the Hedera Hello Future Hackathon that solves Nigeria's biggest logistics challenge: **the waiting game in informal networks**.
+RunAm is a revolutionary peer-to-peer parcel delivery marketplace built for the [Hedera Hello Future Hackathon](https://hellofuturehackathon.dev )that solves Nigeria's biggest logistics challenge: **the waiting game in informal networks**. 
 
 Instead of forcing users to wait 3-7 days for a cousin's travel schedule OR pay DHL ₦40,000 they can't afford, RunAm **tokenizes trust on Hedera**—minting $0.001 NFT receipts for every booking and delivery. This creates **immutable proof**, **portable reputation**, and **continuous trust verification**—all while maintaining 1:1 payment safety.
 
